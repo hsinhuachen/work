@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh-hant">
+  <head>
+    <title>Onion Design Associates | 洋蔥設計</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8">
+    <meta name="Description" content="洋蔥設計提供網頁設計,網站規劃,平面設計,位於台北, Onion Design Associates is a friendly agency who like to do web design and graphic design based in Taipei,Taiwan." />
+    <meta name="Keywords" content="網頁設計,平面設計,Logo Design,Web Design,typography, brand identity" />
+    <meta name="verify-v1" content="ZgiMT+1A/Wydy6d/rU5vBoBZol1YL1TfH07N2Bih2wI=" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!--<meta name="robots" content="all" />
+    <meta name="robots" content="noodp,noydir" />
+    <meta name="revisit-after" content="30 days" />-->
+    <meta name="author" content="洋蔥設計" />
+    <meta name="copyright" content="Onion Design Design" />
+    <meta name="google-site-verification" content="xwf3I97n8E0UAJrTb-CGj6tVldUOMv_aG8eyOJvzBQY" />
+    <link href="favicon.ico" rel="shortcut icon" />
+    <meta property="og:title" content="洋蔥設計">
+    <meta property="og:site_name" content="洋蔥設計"/>
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.oniondesign.com.tw">
+    <meta property="og:image" content="https://www.oniondesign.com.tw/oniondesign_logo.png">
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <%= yield %>
+  </body>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+</html>

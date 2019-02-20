@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyText
+  title_en: MyText
+  desc: MyText
+  desc_en: MyText
+  thumb: MyText
+  url: MyText
+  video: MyString
+  feature: false
+  published: false
+  sorting: 1
+
+two:
+  title: MyText
+  title_en: MyText
+  desc: MyText
+  desc_en: MyText
+  thumb: MyText
+  url: MyText
+  video: MyString
+  feature: false
+  published: false
+  sorting: 1
