@@ -77,6 +77,7 @@ Trestle.resource(:projects) do
       form_group :thumb, label: "作品縮圖", help: "Upload a file less than 2MB." do
         concat image_tag(project.thumb.url(:s)) if project.thumb.url
         raw_file_field :thumb
+        concat content_tag(:p, "圖諞尺寸1620x1080px") 
       end
 
       text_field :url

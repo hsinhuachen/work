@@ -18,17 +18,88 @@
     <meta name="copyright" content="Onion Design Design" />
     <meta name="google-site-verification" content="xwf3I97n8E0UAJrTb-CGj6tVldUOMv_aG8eyOJvzBQY" />
     <link href="favicon.ico" rel="shortcut icon" />
-    <meta property="og:title" content="洋蔥設計">
-    <meta property="og:site_name" content="洋蔥設計"/>
+    <meta property="og:title" content="Onion Design Associates | 洋蔥設計">
+    <meta property="og:site_name" content="Onion Design Associates | 洋蔥設計"/>
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://www.oniondesign.com.tw">
     <meta property="og:image" content="https://www.oniondesign.com.tw/oniondesign_logo.png">
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <script type="application/ld+json">
+    // local
+    {
+      "@context":"http://schema.org",
+      "@type":"LocalBusiness",
+      "@id":"www.oniondesign.com.tw",
+      "name": "無著健康之道",
+      "image":"",
+      "address":{
+        "@type":"PostalAddress",
+        "streetAddress":"木新路3段327號2樓",
+        "addressLocality":"台北市文山區",
+        "postalCode":"40757",
+        "addressCountry":"TW"
+       },
+       "url": "http://www.oniondesign.com.tw",
+        "logo": "",
+        "description": "",
+       "email": "",
+        "telephone":  "02-29375152"
+      }
+    </script>
+
   </head>
 
   <body>
-    <%= yield %>
+    <main id="main" role="main">
+      <header id="header">
+        <nav id="mainNav" class="navbar navbar-expand-lg navbar-fixed-top">
+        <a class="navbar-brand hidden-xs fade" href="#"><img src="" height="60" width="auto" alt="Onion Design Associates 洋蔥設計"></a>
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+
+        <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li class="nav-item">
+              <a class="nav-link btn-list">WORK</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link btn-list">CLIENT</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link btn-list">ABOUT</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link btn-list">EN</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+      </header>
+      <%= yield %>
+
+      <footer id="footer">
+        <p class="contact col-xs-12">+886  2  29375152<br />
+        <%=mail_to 'hello@oniondesign.com.tw','hello@oniondesign.com.tw' %>
+        </p>
+        <div class="col-md-6">
+          <p class="copyright">&copy; onion design associates 2019</p>
+        </div>
+        <div class="col-md-6">
+          <div class="social">
+            <ul class="list-unstyled">
+              <li><%=link_to 'Facebook', 'https://www.facebook.com/oniondesign', :target => "_blank" %></li>
+              <li><%=link_to 'Instagram', 'https://www.instagram.com/onion.design', :target => "_blank" %></li>
+              <li><%=link_to 'Behance', 'https://www.behance.net/onion', :target => "_blank" %></li>
+            </ul>
+          </div>
+        </div>
+        <hr class="clear" />
+      </footer>
+    </main>
   </body>
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
   <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>

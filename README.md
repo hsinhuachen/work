@@ -3,6 +3,13 @@ trestle admin
 carrierwave
 bootstrap
 
+<h3>>google font</h3>
+<ul>
+<li>Montserrat</li>
+<li>noto</li>
+</ul>
+
+
 This README would normally document whatever steps are necessary to get the
 application up and running.
 

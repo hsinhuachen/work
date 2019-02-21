@@ -1,5 +1,20 @@
-<h1>Welcome#index</h1>
+<div id="full" class="carousel slide" data-ride="carousel">
+	<div class="carousel-inner">
+	  <div class="carousel-item active" style="background-image: url('/uploads/project/gallery/1/000.jpg?1920x1080'); ">
+	  </div>
+	</div> <!-- /carousel-inner -->
+</div>
+<div id="content" class="container">
+	<div class="list">
+	<% @posts.each do |post| %>
+		<div class="col-xs-6">
+			<%= link_to 'project' do  %>
+			<%= image_tag post.thumb.url, class: 'img-responsive' %>
+			<% end %>
+		</div>
+	<% end %>
+		<hr class="clear" />
+	</div> <!-- /list -->
 
-<% @posts.each do |post| %>
-<%=post.title %>	
-<% end %>
+	<%= link_to 'View all works', '/projects', class: ['more', 'text-center'] %>
+</div> <!-- /content -->

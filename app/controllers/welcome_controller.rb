@@ -1,5 +1,5 @@
 class WelcomeController < ApplicationController
   def index
-  	@posts = Project.all
+  	@posts = Project.where(published: true)
   end
 end
