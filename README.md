@@ -3,7 +3,7 @@ trestle admin
 carrierwave
 bootstrap
 
-<h3>>google font</h3>
+<h3>google font</h3>
 <ul>
 <li>Montserrat</li>
 <li>noto</li>
@@ -33,6 +33,8 @@ rails g uploader Gallery
 
 
 Administrator.create(email: "*****@gmal.com", password: "*****", first_name: "oniondesign", last_name: "")
+
+rails g controller Projects
 
 * Database initialization
 

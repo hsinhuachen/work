@@ -1,0 +1,13 @@
+<article id="project" class="container">
+	<div class="gallery">
+		<% imgs = @post.gallery_ids %>
+		<% imgs.each do |imgid| %>
+		<%= getGalleryImg(imgid) %>
+		<% 	end %>
+	</div> <!-- /gallery -->
+	<div class="info tw">
+		<h1><%=@post.title %></h1>
+		<%= @post.desc.html_safe %>
+	</div> <!-- /info -->
+	<hr class="clear">
+</article>

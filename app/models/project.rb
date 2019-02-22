@@ -1,7 +1,7 @@
 class Project < ApplicationRecord
 	has_many :taggings, dependent: :destroy
 	has_many :tags, through: :taggings
-	has_many :gallerys, dependent: :destroy
+	has_many :gallerys, -> {  order('name asc') }, dependent: :destroy
 	accepts_nested_attributes_for :gallerys
 	mount_uploader :thumb, AvatarUploader
 

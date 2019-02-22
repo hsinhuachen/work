@@ -3,6 +3,12 @@
 	width: 100%;
 }
 
+.navbar-brand{
+	height: auto;
+	padding: 57px 0 0 57px;
+}
+
+
 #full{
 	margin-bottom: 100px;
 }
@@ -28,14 +34,148 @@
 	line-height: 100%;		
 }
 
+.navbar-static{
+	margin-bottom: 60px;
+	.nav{
+		padding-top: 40px;
+	}
+	.navbar-brand{
+		padding: 40px 0 0 0px;
+	}
+	.nav-link{
+		color: #000;
+	}
+}
+
+.category{
+	padding-bottom: 60px;
+	margin-left: -15px;
+	a{
+		font-family: 'Montserrat', sans-serif;
+		color: #000;
+		font-size: 20px;
+		letter-spacing: 0.5px;
+		line-height: 100%;
+		padding: 0 15px;
+		display: inline-block;
+		&:hover{
+			text-decoration: none;
+		}
+		&:hover span, &.active span{
+			border-bottom: 2px solid #000;
+		}
+	}
+}
+
+.list{
+	margin: 0 -15px;
+}
+
+.project-item {
+	position: relative;
+}
+
+.item-link{
+	position: absolute;
+	left: 15px;
+	right: 15px;
+	top: 0;
+	bottom: 0;
+	z-index: 2;
+	display: block;
+	&:hover ~ .mask{
+		opacity: 1;
+	}
+}
+
+.mask{
+	position: absolute;
+	left: 15px;
+	right: 15px;
+	top: 0;
+	bottom: 0;
+	z-index: 1;
+	background: #000;
+	padding: 30px;
+	transform: translateZ(0);
+}
+
+.project-name{
+	font-family: 'Montserrat', sans-serif;
+	font-weight: 400;
+	color: #FFF;
+	font-size: 2.0rem;
+	line-height: 180%;
+	margin: 0;
+	padding: 0;
+}
+
+.img-item{
+	margin-bottom: 30px;
+}
+
+.pagination{
+	margin: 57px 0;
+}
+
+.pagination > li > a, .pagination > li > span{
+	font-family: 'Montserrat', sans-serif;
+	font-weight: 300;
+	color: #000;
+	font-size: 2.0rem;
+	letter-spacing: 0;
+	border: none;
+}
+
+.info{
+	width: 50%;
+	padding-top: 70px;
+	padding-left: 15px;
+	float: right;
+	&.tw{
+		h1{
+			font-family: 'Noto Sans TC', sans-serif;
+			font-weight: 500;
+			color: #000000;
+			font-size: 2.6rem;
+			text-align: justify;
+			line-height: 211%;
+		}
+		p{
+			font-family: 'Noto Sans TC', sans-serif;
+			font-weight: 300;
+			color: #000000;
+			font-size: 1.8rem;
+			text-align: justify;
+			line-height: 211%;
+		}
+	}
+}
+
+@media screen and (max-width: 991px){
+	.info{
+		width: 100%;
+		float: none;
+		padding-left: 0;
+	}
+}
+
 .more{
 	font-family: 'Montserrat', sans-serif;
+	font-weight: 400;
 	font-size: 2.0rem;
 	color: #000000;
 	letter-spacing: 0.5px;
 	line-height: 140%;
 	padding-top: 57px;
 	display: block;
+	&:hover{
+		text-decoration: none;
+	}
+	&:hover span{
+		color: #000;
+		border-bottom: 2px solid #000;
+	}
 }
 
 #footer{
@@ -82,7 +222,10 @@
 		padding: 0 15px;
 		display: block;
 		&:hover{
-			
+			text-decoration: none;
+		}
+		&:hover span{
+			border-bottom: 1px solid #000;
 		}
 	}
 }
