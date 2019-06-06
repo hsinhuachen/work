@@ -1,9 +1,20 @@
 <div class="container">
 	<div class="category">
-		<%= link_to content_tag(:span,'All'), projects_path, class: 'active' %>
+		<%= if params["category"]
+				link_to content_tag(:span,'All'), projects_path, class: ''
+			else
+				link_to content_tag(:span,'All'), projects_path, class: 'active'
+			end
+		%>
 		<% @tags = showAllTag %>
 		<% @tags.each do |tag|  %>
-			<%= link_to content_tag(:span,tag.name), projects_path %>
+			<%=
+				if params["category"] && params["category"] == tag.name
+					link_to content_tag(:span,tag.name), projects_path(category: tag.name), class: 'active'
+				else
+					link_to content_tag(:span,tag.name), projects_path(category: tag.name)
+				end
+			%>
 		<% end %>
 	</div>
 	<div id="projects" class="list">
@@ -17,7 +28,7 @@
 			</div>
 		<% end %>
 		<hr class="clear">
-		<nav aria-label="Page navigation" class="text-center">
+		<!-- <nav aria-label="Page navigation" class="text-center">
 		  <ul class="pagination justify-content-center">
 		    <li class="page-item disabled">
 		      <a class="page-link" href="#" tabindex="-1">Previous</a>
@@ -29,6 +40,7 @@
 		      <a class="page-link" href="#">Next</a>
 		    </li>
 		  </ul>
-		</nav>
+		</nav> -->
 	</div> <!-- /list -->
-</div
+	<%== pagy_bootstrap_nav(@pagy) if @pagy.pages > 1 %>
+</div>

@@ -5,6 +5,10 @@ class Project < ApplicationRecord
 	accepts_nested_attributes_for :gallerys
 	mount_uploader :thumb, AvatarUploader
 
+	default_scope -> { order('sorting DESC') }
+	# scope :category, -> { joins(:tags).where(:tags => { :id => 1}).where(published: true).order('sorting DESC') }
+	scope :category, ->(category) { joins(:tags).where(:tags => { "name" => category }).where(published: true).order('sorting DESC') }
+
 	def tag_list
 	    tags.map(&:name).join(', ')
 	end
@@ -55,5 +59,13 @@ class Project < ApplicationRecord
 	end
 
 	def delImg
+	end
+
+	def previous
+	  Project.where(["sorting < ?", sorting]).where(published: true).last
+	end
+
+	def next
+	  Project.where(["sorting > ?", sorting]).where(published: true).first
 	end
 end

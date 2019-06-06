@@ -20,17 +20,22 @@ Trestle.resource(:projects) do
   #
   table do
       column :thumb, header: false, class: "thumbImg" do |img|
-        image_tag(img.thumb.url)
+        # image_tag(img.thumb.url)
+        admin_link_to(image_tag(img.thumb.url, class: "poster"), img) if img.thumb?
       end
-      column :title, header: "標題"
-      column :tag_list, sort: false, header: "分類"
+      column :title, link: true, header: "標題"
+      # column :tag_list, sort: false, header: "分類"
+      column :tags, format: :tags, sort: false, header: "分類" do |project|
+        project.tags.map(&:name)
+      end
       column :feature, align: :center, link: false, header: "精選專案" do |project|
-        status_tag(icon("fa fa-check"), :success) if project.featured
+        if project.featured then status_tag(icon("fa fa-check"), :success) else status_tag('none', :danger)  end
       end
       column :published, align: :center, link: false, header: "發佈" do |project|
-        status_tag(icon("fa fa-check"), :success) if project.status
+        if project.status then status_tag(icon("fa fa-check"), :success)  else status_tag('none', :danger) end
+        # status_tag(project.status, {  true => :success, false => :danger }[project.status] || :default)
       end
-      column :sorting, header: "前台排序"
+      column :sorting, header: "排序"
       column :created_at, header: "建立時間", align: :center
       column :updated_at, header: "最後更新時間", align: :center
       actions
@@ -41,62 +46,95 @@ Trestle.resource(:projects) do
   form do |project|
     tab "tw", label: "中文" do
       text_field :title, label: "標題", autocomplete: "off"
-      editor     :desc
+      editor     :desc, label: "描述"
     end
 
     tab "en", label: "英文" do
       text_field :title_en, label: "標題", autocomplete: "off"
-      editor     :desc_en
+      editor     :desc_en, label: "描述"
     end
 
     tab "Gallery" do
       form_group :gallerys, label: false do
         raw_file_field :name, :multiple => true, name: "gallerys[name][]"
-        concat content_tag(:p, "Upload a file less than 2MB. 可上傳多張") 
+
+        mutinote = ["Upload a file less than 2MB. 可上傳多張","圖片尺寸1920x1080px","照檔名排序,0~9, a~z"]
+        concat content_tag(:ul, nil, :class => 'help-block') {
+          mutinote.collect do |item|
+            content_tag(:li, item)
+          end.join.html_safe
+        }
 
         hidden_field :delImg, name: "delImgStr"
         galleryIds = project.gallery_ids
         galleryIds.map do |id|
           img = project.img_name(id)
           row do
-            # col(xs: 1) { concat content_tag(:p, id, class: "imgPanel") }
-            col(xs: 6) { concat content_tag(:div, image_tag(img.name.url), class: "imgPanel") if img.name }
-            col(xs: 6) { concat link_to "Remove image", "#", class: "delImg", data: { id: id , confirm: "Are you sure you want to delete this image?" } }
-          end   
+            col(xs: 6) { 
+              concat content_tag(:div, nil ,:class =>"imgPanel") {
+                image_tag(img.name.url)+
+                link_to(content_tag(:i, 'Delete image', class: "fa fa-trash"), "#", class: "delImg btn btn-danger has-icon", data: { id: id , toggle: "confirm-delete", placement: "bottom" })
+                # link_to(content_tag(:i, 'Delete image', class: "fa fa-trash"), "#", class: "delImg btn btn-danger has-icon", data: { id: id , confirm: "Are you sure you want to delete this image?" })
+              }
+            }
+          end #end row
         end
-
       end
 
       concat(content_tag(:div, content_tag(:img),class: "upload-preview"))
     end
 
-    tab "setting", label: "基本設定" do
-      # tag_select :tag_items
-      select :tag_ids, Tag.all, { label: "category" }, { multiple: true, data: { tags: true } }
-
-      form_group :thumb, label: "作品縮圖", help: "Upload a file less than 2MB." do
-        concat image_tag(project.thumb.url) if project.thumb.url
+    sidebar do
+      form_group :thumb, label: "作品縮圖", help: "圖片尺寸1920x1080px" do
+        concat image_tag(project.thumb.url, class: "thumbimg") if project.thumb.url
         raw_file_field :thumb
-        concat content_tag(:p, "圖片尺寸1620x1080px") 
       end
 
-      text_field :url
+      # tag_select :tag_items
+      select :tag_ids, Tag.all, { label: "類別" }, { multiple: true, data: { tags: true } }
 
-      row do
-        col(xs: 1) { text_field :sorting, label: "排序", placeholder: 0, value: project.checksorting }
-        col(xs: 11) {  }
+      text_field :url, label: "連結", placeholder: "http://"
+
+      text_field :video, label: "Media", help: "請輸入 vimeo 或 youtube 網址", placeholder: "http://vimeo.com/channels/staffpicks/52706924"
+
+      #check_box :feature, label: "精選專案"
+      form_group :feature, label: "精選專案" do
+        # radio_button :feature, "Yes", 
+        # radio_button :feature, "No", checked: true
+        content_tag :fieldset, :class => "btn-group radio" do
+          if project.feature == true
+            concat content_tag(:input,'', type: "radio", value: true, name: 'project[feature]', id: "project_feature_0", checked: true)
+            concat content_tag(:label,"是", for: 'project_feature_0', class: 'yes')
+            concat content_tag(:input,'', type: "radio", value: false, name: 'project[feature]', id: "project_feature_1")
+            concat content_tag(:label,"否", for: 'project_feature_1', class: 'no')
+          else
+            concat content_tag(:input,'', type: "radio", value: true, name: 'project[feature]', id: "project_feature_0")
+            concat content_tag(:label,"是", for: 'project_feature_0', class: 'yes')
+            concat content_tag(:input,'', type: "radio", value: false, name: 'project[feature]', id: "project_feature_1", checked: true)
+            concat content_tag(:label,"否", for: 'project_feature_1', class: 'no')
+          end
+        end
       end
 
-      check_box :feature, label: "精選文章"
-      check_box :published, label: "發佈文章"
+      form_group :published, label: "發佈文章" do
+        content_tag :fieldset, :class => "btn-group radio" do
+          if project.published == true
+            concat content_tag(:input,'', type: "radio", value: true, name: 'project[published]', id: "project_published_0", checked: true)
+            concat content_tag(:label,"是", for: 'project_published_0', class: 'yes')
+            concat content_tag(:input,'', type: "radio", value: false, name: 'project[published]', id: "project_published_1")
+            concat content_tag(:label,"否", for: 'project_published_1', class: 'no')
+          else
+            concat content_tag(:input,'', type: "radio", value: true, name: 'project[published]', id: "project_published_0")
+            concat content_tag(:label,"是", for: 'project_published_0', class: 'yes')
+            concat content_tag(:input,'', type: "radio", value: false, name: 'project[published]', id: "project_published_1", checked: true)
+            concat content_tag(:label,"否", for: 'project_published_1', class: 'no')
+          end
+        end
+      end
 
-      # row do
-      #   col(xs: 6) { datetime_field :updated_at }
-      #   col(xs: 6) { datetime_field :created_at }
-      # end
-
+      text_field :sorting, label: "排序", help: '數字越大越前面', placeholder: 0, value: project.checksorting 
     end
-  end
+  end #end form
 
   controller do 
     def create

@@ -1,16 +1,24 @@
-<div id="full" class="carousel slide" data-ride="carousel">
+<div id="full" class="carousel slide carousel-fade" data-ride="carousel">
 	<div class="carousel-inner">
-	  <div class="carousel-item active" style="background-image: url('/uploads/project/gallery/1/000.jpg?1920x1080'); ">
+	  <div class="item carousel-item active" style="background-image: url('<%= asset_path("chenli.jpg") %>'); ">
+	  </div>
+	  <div class="item carousel-item" style="background-image: url('<%= asset_path("gutenberg.jpg") %>'); ">
+	  </div>
+	  <div class="item carousel-item" style="background-image: url('<%= asset_path("holdthattiger.jpg") %>'); ">
+	  </div>
+	  <div class="item carousel-item" style="background-image: url('<%= asset_path("tolaku.jpg") %>'); ">
 	  </div>
 	</div> <!-- /carousel-inner -->
 </div>
 <div id="content" class="container">
-	<div class="list">
+	<div class="homelist list">
 	<% @posts.each do |post| %>
-		<div class="col-xs-6">
-			<%= link_to post do  %>
-			<%= image_tag post.thumb.url, class: 'img-responsive' %>
-			<% end %>
+		<div class="project-item col-sm-6">
+			<%= link_to "", post, class: "item-link"  %>
+			<div class="mask fade">
+				<h3 class="project-name"><%=post.title %></h3>
+			</div>
+			<%= image_tag post.thumb.url + "?" + DateTime.now.strftime('%s'), class: 'img-responsive', alt: post.title %>			
 		</div>
 	<% end %>
 		<hr class="clear" />

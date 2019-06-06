@@ -1,5 +1,14 @@
 <article id="project" class="container">
+	<% if @post.published %>
 	<div class="gallery">
+		<% if @post.video != "" %>
+			<div class="img-item">
+				<div class="embed-responsive embed-responsive-16by9">
+					<%= get_video_iframe(@post.video) %>
+				</div>
+			</div>
+		<% end %>
+
 		<% imgs = @post.gallery_ids %>
 		<% imgs.each do |imgid| %>
 		<%= getGalleryImg(imgid) %>
@@ -10,4 +19,14 @@
 		<%= @post.desc.html_safe %>
 	</div> <!-- /info -->
 	<hr class="clear">
+	<div class="control hidden-xs">
+		<%= link_to content_tag(:span,'Previous project'), @post.previous, class: 'col-xs-3' %>
+		<%= link_to content_tag(:span,'Back'), projects_path, class: 'col-xs-6 text-center' %>
+		<%= link_to content_tag(:span,'Next project'), @post.next, class: 'col-xs-3 text-right'  %>
+		<hr class="clear" />
+	</div> <!-- /control -->
+
+	<% else %>
+		<!-- <p>作品未發佈</p> -->
+	<% end # end if published %>
 </article>

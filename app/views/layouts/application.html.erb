@@ -59,12 +59,12 @@
         %>
 
         <nav id="mainNav" class="navbar navbar-expand-lg navbar-fixed-top">
-        <%= link_to image_tag("onion_logo_w.svg", alt: "Onion Design Associates | 洋蔥設計"), root_path, class: "navbar-brand hidden-xs" %>
+        <%= link_to image_tag("onion_logo_w.svg", alt: "Onion Design Associates | 洋蔥設計", class: "svgimg logo"), root_path, class: "navbar-brand hidden-xs" %>
 
         <% else %>
   
         <nav id="mainNav" class="navbar navbar-expand-lg navbar-static container">
-        <%= link_to image_tag("onion_logo_b.svg", size: '260x129', alt: "Onion Design Associates | 洋蔥設計"), root_path, class: "navbar-brand hidden-xs" %>
+        <%= link_to image_tag("onion_logo_b.svg", alt: "Onion Design Associates | 洋蔥設計", class: "svgimg logo"), root_path, class: "navbar-brand hidden-xs" %>
 
         <% end %>
         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -95,25 +95,31 @@
       <%= yield %>
 
       <footer id="footer">
-        <p class="contact col-xs-12">+886  2  29375152<br />
-        <%=mail_to 'hello@oniondesign.com.tw','hello@oniondesign.com.tw' %>
-        </p>
-        <div class="col-md-6">
-          <p class="copyright">&copy; onion design associates 2019</p>
-        </div>
-        <div class="col-md-6">
-          <div class="social">
-            <ul class="list-unstyled">
-              <li><%=link_to content_tag(:span,'Facebook'), 'https://www.facebook.com/oniondesign', :target => "_blank" %></li>
-              <li><%=link_to content_tag(:span,'Instagram'), 'https://www.instagram.com/onion.design', :target => "_blank" %></li>
-              <li><%=link_to content_tag(:span,'Behance'), 'https://www.behance.net/onion', :target => "_blank" %></li>
-            </ul>
+        <div class="row">
+          <p class="contact col-xs-10">+886  2  29375152<br />
+            <%=mail_to 'hello@oniondesign.com.tw','hello@oniondesign.com.tw' %>
+          </p>
+          <div class="col-xs-2 text-right">
+            <%=link_to '↑', '#top', class: "gotop" %> 
           </div>
-        </div>
-        <hr class="clear" />
+        </div> <!-- /row -->
+        <div class="row">
+          <div class="col-md-6">
+            <p class="copyright">&copy; onion design associates 2019</p>
+          </div>
+          <div class="col-md-6">
+            <div class="social">
+              <ul class="list-unstyled">
+                <li><%=link_to content_tag(:span,'Facebook'), 'https://www.facebook.com/oniondesign', :target => "_blank" %></li>
+                <li><%=link_to content_tag(:span,'Instagram'), 'https://www.instagram.com/onion.design', :target => "_blank" %></li>
+                <li><%=link_to content_tag(:span,'Behance'), 'https://www.behance.net/onion', :target => "_blank" %></li>
+              </ul>
+            </div>
+          </div>
+        </div> <!-- /row -->
       </footer>
     </main>
   </body>
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
   <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 </html>

@@ -6,10 +6,13 @@ Trestle.resource(:tags) do
 	# Customize the table columns shown on the index view.
 	#
 	table do
-	  column :id
 	  column :name
 	  column :created_at, align: :center
 	  column :updated_at, header: "Last Updated", align: :center
 	  actions
+	end
+
+	form dialog: true do |type|
+		text_field :name
 	end
 end

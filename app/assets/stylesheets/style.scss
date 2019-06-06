@@ -1,3 +1,15 @@
+@mixin animated($item: all, $sec: 1s) {
+    -webkit-transition: $item $sec ease;
+    -moz-transition: $item $sec ease;
+    -ms-transition: $item $sec ease;
+    -o-transition: $item $sec ease;
+    transition: $item $sec ease;
+}
+
+a:focus{
+	outline: none;
+}
+
 .img-responsive{
 	max-width: 1600px;
 	width: 100%;
@@ -8,6 +20,18 @@
 	padding: 57px 0 0 57px;
 }
 
+.logopath{
+	@include animated(fill,0.6s);
+}
+
+#header{
+	&.black .logopath{
+		fill: #000000;
+	}
+	&.black .nav-link{
+		color: #000000;
+	}
+}
 
 #full{
 	margin-bottom: 100px;
@@ -18,6 +42,38 @@
 	background-position: center center;
 	background-size: cover;
 	height: 100vh;
+}
+
+.carousel-fade {
+    .carousel-inner {
+        .item {
+            transition-property: opacity;
+        }
+        
+        .item,
+        .active.left,
+        .active.right {
+            opacity: 0;
+        }
+
+        .active,
+        .next.left,
+        .prev.right {
+            opacity: 1;
+        }
+
+        .next,
+        .prev,
+        .active.left,
+        .active.right {
+            left: 0;
+            transform: translate3d(0, 0, 0);
+        }
+    }
+
+    .carousel-control {
+        z-index: 2;
+    }
 }
 
 .nav{
@@ -34,16 +90,26 @@
 	line-height: 100%;		
 }
 
+.logo{
+	width: 150px;
+	height: auto;
+}
+
 .navbar-static{
 	margin-bottom: 60px;
 	.nav{
 		padding-top: 40px;
+		padding-right: 0;
 	}
 	.navbar-brand{
 		padding: 40px 0 0 0px;
 	}
 	.nav-link{
 		color: #000;
+	}
+	.logo{
+		width: 130px;
+		height: auto;
 	}
 }
 
@@ -57,6 +123,7 @@
 		letter-spacing: 0.5px;
 		line-height: 100%;
 		padding: 0 15px;
+		text-transform: uppercase;
 		display: inline-block;
 		&:hover{
 			text-decoration: none;
@@ -71,8 +138,39 @@
 	margin: 0 -15px;
 }
 
+.homelist{
+	font-size: 0;
+	margin: 0 -30px;
+	.project-item{
+		float: none;
+		padding-left: 30px;
+		padding-right: 30px;
+		vertical-align: top;
+		display: inline-block;
+	}
+	.mask{
+		left: 30px;
+		right: 30px;
+	}
+}
+
+@media screen and (max-width: 779px){
+	.homelist{
+		margin: 0 -15px;
+	}
+}
+
+@media screen and (max-width: 767px){
+	
+}
+
 .project-item {
 	position: relative;
+	margin-bottom: 30px;
+}
+
+.homelist .project-item{
+	margin-bottom: 60px;
 }
 
 .item-link{
@@ -114,8 +212,34 @@
 	margin-bottom: 30px;
 }
 
-.pagination{
-	margin: 57px 0;
+.control{
+	padding: 100px 0 3px 0;
+	a{
+		font-family: 'Montserrat', sans-serif;
+		font-weight: 300;
+		color: #000;
+		font-size: 2.0rem;
+		letter-spacing: 0;
+		line-height: 140%;
+		&:hover{
+			text-decoration: none;
+		}
+		&:hover span{
+			border-bottom: 1px solid #000;
+		}
+	}
+}
+
+.pagy-bootstrap-nav{
+	width: 100%;
+}
+
+.pagination {
+	text-align: center;
+	margin: 0;
+	ul{
+		margin: 57px 0;
+	}
 }
 
 .pagination > li > a, .pagination > li > span{
@@ -133,21 +257,17 @@
 	padding-left: 15px;
 	float: right;
 	&.tw{
+		font-family: 'Noto Sans TC', sans-serif;
+		font-weight: 300;
+		color: #000000;
+		font-size: 1.8rem;
+		text-align: justify;
+		line-height: 211%;
 		h1{
 			font-family: 'Noto Sans TC', sans-serif;
 			font-weight: 500;
 			color: #000000;
 			font-size: 2.6rem;
-			text-align: justify;
-			line-height: 211%;
-		}
-		p{
-			font-family: 'Noto Sans TC', sans-serif;
-			font-weight: 300;
-			color: #000000;
-			font-size: 1.8rem;
-			text-align: justify;
-			line-height: 211%;
 		}
 	}
 }
@@ -178,8 +298,17 @@
 	}
 }
 
+.gotop{
+	color: #000;
+	font-size: 2.0rem;
+	padding: 15px;
+	&:hover{
+		text-decoration: none;
+	}
+}
+
 #footer{
-	padding: 57px 45px;
+	padding: 57px 30px;
 	p, ul{
 		margin-bottom: 0;
 	}
@@ -195,8 +324,8 @@
 
 @media screen and (max-width: 767px) {
 	#footer{
-		padding-left: 0;
-		padding-right: 0;
+		padding-left: 15px;
+		padding-right: 15px;
 	}
 }
 
@@ -204,6 +333,10 @@
 	padding-bottom: 57px;
 	a{
 		color: #000;
+		&:hover{
+			text-decoration: none;
+			border-bottom: 1px solid #000;
+		}
 	}
 }
 
@@ -247,4 +380,5 @@
 	margin: 0;
 	padding: 0;
 }
+
 
