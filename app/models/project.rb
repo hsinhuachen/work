@@ -4,6 +4,7 @@ class Project < ApplicationRecord
 	has_many :gallerys, -> {  order('name asc') }, dependent: :destroy
 	accepts_nested_attributes_for :gallerys
 	mount_uploader :thumb, AvatarUploader
+	validates :title, presence: true
 
 	default_scope -> { order('sorting DESC') }
 	# scope :category, -> { joins(:tags).where(:tags => { :id => 1}).where(published: true).order('sorting DESC') }

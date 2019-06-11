@@ -6,13 +6,13 @@ Trestle.resource(:tags) do
 	# Customize the table columns shown on the index view.
 	#
 	table do
-	  column :name
+	  column :name, header: "類別名稱"
 	  column :created_at, align: :center
 	  column :updated_at, header: "Last Updated", align: :center
 	  actions
 	end
 
 	form dialog: true do |type|
-		text_field :name
+		text_field :name, label: "類別名稱"
 	end
 end

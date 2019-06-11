@@ -7,10 +7,9 @@
 //    @import "trestle/custom/my_custom_css";
 //
 
-.thumbImg img{
-	max-width: 200px;
-	width: 100%;
-	height: auto;
+.col-thumb {
+	width: 220px;
+	padding-right: 20px !important;
 }
 
 .upload-preview{
@@ -90,3 +89,17 @@ p.help-block{
    	 	background-color: #bd362f;
 	}
 }
+
+.action-btn:hover, .action-btn:focus{
+	text-decoration: none;
+}
+
+.action-btn:hover{
+	.label-success{
+		background: #5ab65a;
+	}
+	.label-danger{
+		background-color: #d84c48;
+	}
+}
+

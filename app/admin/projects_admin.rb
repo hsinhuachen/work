@@ -19,9 +19,9 @@ Trestle.resource(:projects) do
   # Customize the table columns shown on the index view.
   #
   table do
-      column :thumb, header: false, class: "thumbImg" do |img|
+      column :thumb, header: false, class: "col-thumb" do |img|
         # image_tag(img.thumb.url)
-        admin_link_to(image_tag(img.thumb.url, class: "poster"), img) if img.thumb?
+        admin_link_to(image_tag(img.thumb.url, class: "img-responsive"), img) if img.thumb?
       end
       column :title, link: true, header: "標題"
       # column :tag_list, sort: false, header: "分類"
@@ -29,10 +29,20 @@ Trestle.resource(:projects) do
         project.tags.map(&:name)
       end
       column :feature, align: :center, link: false, header: "精選專案" do |project|
-        if project.featured then status_tag(icon("fa fa-check"), :success) else status_tag('none', :danger)  end
-      end
-      column :published, align: :center, link: false, header: "發佈" do |project|
-        if project.status then status_tag(icon("fa fa-check"), :success)  else status_tag('none', :danger) end
+        if project.featured then 
+          # status_tag(icon("fa fa-check"), :success) 
+          link_to(status_tag(icon("fa fa-check"), :success) , admin.path(:cancel_feature, id: project.id), method: :post, class: "action-btn")
+        else 
+          link_to(status_tag('none', :danger) , admin.path(:pub_feature, id: project.id), method: :post, class: "action-btn")
+        end
+            end
+      column :published, align: :center, link: false, header: "發佈" do |project|      
+        if project.status then 
+          link_to(status_tag(icon("fa fa-check"), :success) , admin.path(:cancel_status, id: project.id), method: :post, class: "action-btn")
+        else 
+          link_to(status_tag('none', :danger) , admin.path(:pub_status, id: project.id), method: :post, class: "action-btn")
+        end
+
         # status_tag(project.status, {  true => :success, false => :danger }[project.status] || :default)
       end
       column :sorting, header: "排序"
@@ -58,7 +68,7 @@ Trestle.resource(:projects) do
       form_group :gallerys, label: false do
         raw_file_field :name, :multiple => true, name: "gallerys[name][]"
 
-        mutinote = ["Upload a file less than 2MB. 可上傳多張","圖片尺寸1920x1080px","照檔名排序,0~9, a~z"]
+        mutinote = ["Upload a file less than 2MB. 可上傳多張","圖片尺寸 1920x1080px","照檔名排序, 0~9, a~z"]
         concat content_tag(:ul, nil, :class => 'help-block') {
           mutinote.collect do |item|
             content_tag(:li, item)
@@ -70,7 +80,7 @@ Trestle.resource(:projects) do
         galleryIds.map do |id|
           img = project.img_name(id)
           row do
-            col(xs: 6) { 
+            col(md: 6) { 
               concat content_tag(:div, nil ,:class =>"imgPanel") {
                 image_tag(img.name.url)+
                 link_to(content_tag(:i, 'Delete image', class: "fa fa-trash"), "#", class: "delImg btn btn-danger has-icon", data: { id: id , toggle: "confirm-delete", placement: "bottom" })
@@ -85,7 +95,7 @@ Trestle.resource(:projects) do
     end
 
     sidebar do
-      form_group :thumb, label: "作品縮圖", help: "圖片尺寸1920x1080px" do
+      form_group :thumb, label: "作品縮圖", help: "圖片尺寸 1920x1080px" do
         concat image_tag(project.thumb.url, class: "thumbimg") if project.thumb.url
         raw_file_field :thumb
       end
@@ -209,11 +219,41 @@ Trestle.resource(:projects) do
 
     end  # end update
 
+    def pub_feature
+      missile = admin.find_instance(params)
+      missile.update("feature" => true);
+      flash[:message] = flash_message("feature.success", title: "#{missile.title} 已設為精選專案", message: "The %{lowercase_model_name} was successfully updated.")  
+      redirect_to admin.path(:index, id: missile)
+    end
+
+    def cancel_feature
+      missile = admin.find_instance(params)
+      missile.update("feature" => false)
+      flash[:error] = flash_message("feature.cancel", title: "#{missile.title} 已取消精選專案", message: "The %{lowercase_model_name} was successfully updated.")  
+      redirect_to admin.path(:index, id: missile)
+    end
+
+    def pub_status
+      missile = admin.find_instance(params)
+      missile.update("published" => true);
+      flash[:message] = flash_message("published.success", title: "#{missile.title} 已發佈", message: "The %{lowercase_model_name} was successfully updated.")  
+      redirect_to admin.path(:index, id: missile)
+    end
+
+    def cancel_status
+      missile = admin.find_instance(params)
+      missile.update("published" => false)
+      flash[:error] = flash_message("published.cancel", title: "#{missile.title} 已取消發佈", message: "The %{lowercase_model_name} was successfully updated.")  
+      redirect_to admin.path(:index, id: missile)
+    end
   end
 
-  # routes do
-  #   post :launch
-  # end
+  routes do
+    post :pub_feature, on: :member
+    post :cancel_feature, on: :member
+    post :pub_status, on: :member
+    post :cancel_status, on: :member
+  end
 
   # By default, all parameters passed to the update and create actions will be
   # permitted. If you do not have full trust in your users, you should explicitly
