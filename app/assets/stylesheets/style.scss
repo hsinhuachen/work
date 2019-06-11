@@ -135,6 +135,7 @@ a:focus{
 }
 
 .list{
+	font-size: 0;
 	margin: 0 -15px;
 }
 
@@ -142,11 +143,8 @@ a:focus{
 	font-size: 0;
 	margin: 0 -30px;
 	.project-item{
-		float: none;
 		padding-left: 30px;
 		padding-right: 30px;
-		vertical-align: top;
-		display: inline-block;
 	}
 	.mask{
 		left: 30px;
@@ -167,6 +165,9 @@ a:focus{
 .project-item {
 	position: relative;
 	margin-bottom: 30px;
+	float: none;
+	vertical-align: top;
+	display: inline-block;
 }
 
 .homelist .project-item{
@@ -252,22 +253,24 @@ a:focus{
 }
 
 .info{
+	color: #000000;
+	font-size: 1.8rem;
+	font-weight: 300;
+	line-height: 211%;
 	width: 50%;
 	padding-top: 70px;
 	padding-left: 15px;
 	float: right;
+	h1{
+		color: #000000;
+		font-size: 2.6rem;
+		font-weight: 500;
+	}
 	&.tw{
 		font-family: 'Noto Sans TC', sans-serif;
-		font-weight: 300;
-		color: #000000;
-		font-size: 1.8rem;
 		text-align: justify;
-		line-height: 211%;
 		h1{
 			font-family: 'Noto Sans TC', sans-serif;
-			font-weight: 500;
-			color: #000000;
-			font-size: 2.6rem;
 		}
 	}
 }

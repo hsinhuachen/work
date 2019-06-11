@@ -14,10 +14,21 @@
 		<%= getGalleryImg(imgid) %>
 		<% 	end %>
 	</div> <!-- /gallery -->
-	<div class="info tw">
-		<h1><%=@post.title %></h1>
-		<%= @post.desc.html_safe %>
+	<% if I18n.locale == :en %>
+	<div class="info en">
+
+	<h1><%=@post.title_en %></h1>
+	<%= @post.desc_en.html_safe %>
 	</div> <!-- /info -->
+
+	<% else %>
+
+	<div class="info tw">
+	<h1><%=@post.title %></h1>
+	<%= @post.desc.html_safe %>
+	</div>
+
+	<% end %>
 	<hr class="clear">
 	<div class="control hidden-xs">
 		<%= link_to content_tag(:span,'Previous project'), @post.previous, class: 'col-xs-3' %>

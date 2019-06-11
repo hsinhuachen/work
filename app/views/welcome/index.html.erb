@@ -14,6 +14,7 @@
 	<div class="homelist list">
 	<% @posts.each do |post| %>
 		<div class="project-item col-sm-6">
+			<% #link_to "", project_path(I18n.locale, id: post.id), class: "item-link" %>
 			<%= link_to "", post, class: "item-link"  %>
 			<div class="mask fade">
 				<h3 class="project-name"><%=post.title %></h3>

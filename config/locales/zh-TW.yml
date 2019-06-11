@@ -1,0 +1,8 @@
+zh-TW:
+  admin:
+    projects:
+      titles:
+        # index: "作品列表"
+        # edit: "Custom Title"
+    format:
+      blank: "none"

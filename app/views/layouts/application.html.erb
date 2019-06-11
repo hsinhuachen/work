@@ -1,5 +1,9 @@
 <!DOCTYPE html>
+<% if I18n.locale == :en %>
+<html lang="en">
+<% else %>
 <html lang="zh-hant">
+<% end %>
   <head>
     <title>Onion Design Associates | 洋蔥設計</title>
     <%= csrf_meta_tags %>
@@ -76,7 +80,8 @@
         <div class="collapse navbar-collapse">
           <ul class="nav navbar-nav navbar-right">
             <li class="nav-item">
-              <%=link_to "WORK", projects_path, class: "nav-link" %>
+              <% class_name = current_page?(projects_path) ? 'nav-link active' : 'nav-link' %>
+              <%=link_to "WORK", projects_path, :class => class_name %>
             </li>
             <li class="nav-item">
               <a class="nav-link btn-list">CLIENT</a>
@@ -85,7 +90,13 @@
               <a class="nav-link btn-list">ABOUT</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link btn-list">EN</a>
+              <%=
+                if I18n.locale == :en
+                  link_to "中", {:controller => controller_name, :action => action_name, :locale => "zh-TW"}, class: "nav-link btn-list"
+                else
+                  link_to "EN", {:controller => controller_name, :action => action_name, :locale => "en"}, class: "nav-link btn-list"
+                end
+              %>
             </li>
           </ul>
         </div>
