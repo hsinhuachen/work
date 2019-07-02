@@ -66,7 +66,13 @@ Trestle.resource(:projects) do
 
     tab "Gallery" do
       form_group :gallerys, label: false do
-        raw_file_field :name, :multiple => true, name: "gallerys[name][]"
+
+        concat content_tag(:div, nil, :class => "custom-file"){
+          raw_file_field :name, :multiple => true, name: "gallerys[name][]", class: "custom-file-input", id: "customFile"
+          concat content_tag(:label, "Choose file", class: "custom-file-label", for: "customFile")
+        }
+
+        # raw_file_field :name, :multiple => true, name: "gallerys[name][]"
 
         mutinote = ["Upload a file less than 2MB. 可上傳多張","圖片尺寸 1920x1080px","照檔名排序, 0~9, a~z"]
         concat content_tag(:ul, nil, :class => 'help-block') {
@@ -96,7 +102,9 @@ Trestle.resource(:projects) do
 
     sidebar do
       form_group :thumb, label: "作品縮圖", help: "圖片尺寸 1920x1080px" do
-        concat image_tag(project.thumb.url, class: "thumbimg") if project.thumb.url
+        concat content_tag(:div, nil, class: "previewimg", id: "thumbpreview"){ 
+          concat image_tag(project.thumb.url, class: "thumbimg") if project.thumb.url
+        }
         raw_file_field :thumb
       end
 

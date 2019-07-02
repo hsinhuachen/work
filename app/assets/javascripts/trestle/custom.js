@@ -5,11 +5,9 @@
 // within individual partials and `require` them here.
 //
 //  e.g. //= require "trestle/custom/my_custom_js"
+//= require "trestle/imgupload.js"
 
 $(function(){
-	var preview = $(".upload-preview img");
-	var target = $("#project_gallery_list");
-
 	// $("#project_gallery").change(function(event){
  //       var input = $(event.currentTarget);
  //       var len = input[0].files.length;
