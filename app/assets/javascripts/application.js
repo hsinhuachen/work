@@ -16,8 +16,13 @@
 $(function(){
 	svgimg();
 
-    $("#carousel").carousel({
-      interval: 2000
+    $(".slider").bxSlider({
+        mode: "fade",
+        controls: false,
+        pager: false,
+        auto: true,
+        speed: 800,
+        autoDelay: 4000
     });
 
     $(".gotop").on('click', function(event) {
@@ -57,6 +62,28 @@ $(window).on("load", function (e) {
                     }
                 }, 600);
             }
+        });
+    });
+});
+
+$(window).on("load", function (e) {
+    var progress = 0;
+    var imgCount = $('img').length;
+    var baseCount = 0;
+
+    $('img').each(function(){
+        var src = $(this).attr('src');
+
+        $('<img>').attr('src',src).on('load',function(){
+            progress++;
+
+            if(progress == imgCount) {
+              $("#loading").addClass('fadeOut');
+
+              setTimeout(function(){
+                $("#loading").remove();
+              },600);
+            } // end if
         });
     });
 });

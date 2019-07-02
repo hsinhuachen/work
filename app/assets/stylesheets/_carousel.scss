@@ -1,0 +1,38 @@
+#full{
+    overflow: hidden;
+}
+
+.bx-wrapper{
+    padding: 0;
+    border: none;
+    box-shadow: none;
+}
+
+.carousel-inner{
+    height: 100vh;
+}
+
+.pic{
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: cover;
+    width: 100%;
+	height: 100vh;
+    animation: img-small 15s linear infinite;
+}
+
+@keyframes img-small {
+  0% {
+    -moz-transform: scale(1.3);
+    -ms-transform: scale(1.3);
+    -webkit-transform: scale(1.3);
+    transform: scale(1.3);
+  }
+  100% {
+    -moz-transform: scale(1);
+    -ms-transform: scale(1);
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+}
+

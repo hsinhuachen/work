@@ -37,45 +37,6 @@ a:focus{
 	margin-bottom: 100px;
 }
 
-.carousel-item{
-	background-repeat: no-repeat;
-	background-position: center center;
-	background-size: cover;
-	height: 100vh;
-}
-
-.carousel-fade {
-    .carousel-inner {
-        .item {
-            transition-property: opacity;
-        }
-        
-        .item,
-        .active.left,
-        .active.right {
-            opacity: 0;
-        }
-
-        .active,
-        .next.left,
-        .prev.right {
-            opacity: 1;
-        }
-
-        .next,
-        .prev,
-        .active.left,
-        .active.right {
-            left: 0;
-            transform: translate3d(0, 0, 0);
-        }
-    }
-
-    .carousel-control {
-        z-index: 2;
-    }
-}
-
 .nav{
 	padding-top: 57px;
 	padding-right: 57px;
@@ -298,37 +259,6 @@ a:focus{
 	&:hover span{
 		color: #000;
 		border-bottom: 2px solid #000;
-	}
-}
-
-.gotop{
-	color: #000;
-	font-size: 2.0rem;
-	padding: 15px;
-	&:hover{
-		text-decoration: none;
-	}
-}
-
-#footer{
-	padding: 57px 30px;
-	p, ul{
-		margin-bottom: 0;
-	}
-	p{
-		font-family: 'Montserrat', sans-serif;
-		font-weight: 300;
-		color: #000;
-		font-size: 2.0rem;
-		line-height: 140%;
-		letter-spacing: 0.5px;
-	}
-}
-
-@media screen and (max-width: 767px) {
-	#footer{
-		padding-left: 15px;
-		padding-right: 15px;
 	}
 }
 
