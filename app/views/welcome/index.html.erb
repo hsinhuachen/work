@@ -1,19 +1,4 @@
-<div id="full" class="carousel">
-	<div class="carousel-inner slider">
-	  <div class="carousel-item">
-	  	<div class="pic" style="background-image: url('<%= asset_path("chenli.jpg") %>'); "></div>
-	  </div>
-	  <div class="carousel-item">
-	  	<div class="pic" style="background-image: url('<%= asset_path("gutenberg.jpg") %>'); "></div>
-	  </div>
-	  <div class="carousel-item">
-	  	<div class="pic" style="background-image: url('<%= asset_path("holdthattiger.jpg") %>'); "></div>
-	  </div>
-	  <div class="carousel-item">
-	  	<div class="pic" style="background-image: url('<%= asset_path("tolaku.jpg") %>'); "></div>
-	  </div>
-	</div> <!-- /carousel-inner -->
-</div>
+<%= render "shared/cycle" %>
 <div id="content" class="container">
 	<div class="homelist list">
 	<% @posts.each do |post| %>

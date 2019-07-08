@@ -31,4 +31,12 @@
 
 en:
   hello: "Hello world"
+
   
+pagy:
+    nav:
+      prev: "Previous"
+      next: "Next"
+      gap: "…"
+  
+

@@ -1,6 +1,7 @@
 # set global defaults and extra variables typically in the pagy.rb initializer
 # they will get merged with every new Pagy instance
 require 'pagy/extras/bootstrap'
+require 'pagy/extras/i18n'
 
 Pagy::VARS[:items]    = 15
 Pagy::VARS[:some_var] = 'default value'

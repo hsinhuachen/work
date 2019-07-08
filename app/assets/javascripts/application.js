@@ -48,46 +48,36 @@ $(window).on("load", function (e) {
     var progress = 0;
     var imgCount = $('img').length;
     var baseCount = 0;
-    $('img').each(function(){
-        var src = $(this).attr('src');
-        $('<img>').attr('src',src).on('load',function(){
-            progress++;
 
-            if(progress == imgCount) {
-                //$('#loadingBar').css({'height': '100%'});
-                
-                setTimeout(function(){
-                    if($(".img-item").length > 0){
-                        productShow();
-                    }
-                }, 600);
-            }
+    if(imgCount > 0){
+        $('img').each(function(){
+            var src = $(this).attr('src');
+            $('<img>').attr('src',src).on('load',function(){
+                progress++;
+
+                if(progress == imgCount) {
+                    $("#loading").addClass('fadeOut');
+
+                    setTimeout(function(){
+                        $("#loading").remove();
+                    },600);
+                    
+                    setTimeout(function(){
+                        if($(".img-item").length > 0){
+                            productShow();
+                        }
+                    }, 600);
+                }
+            });
         });
-    });
+    }else{
+        $("#loading").addClass('fadeOut');
+
+        setTimeout(function(){
+            $("#loading").remove();
+        },600);
+    }
 });
-
-$(window).on("load", function (e) {
-    var progress = 0;
-    var imgCount = $('img').length;
-    var baseCount = 0;
-
-    $('img').each(function(){
-        var src = $(this).attr('src');
-
-        $('<img>').attr('src',src).on('load',function(){
-            progress++;
-
-            if(progress == imgCount) {
-              $("#loading").addClass('fadeOut');
-
-              setTimeout(function(){
-                $("#loading").remove();
-              },600);
-            } // end if
-        });
-    });
-});
-
 $(window).scroll(function(event) {
 	var scrolltop = $(window).scrollTop();
 
