@@ -1,0 +1,14 @@
+<% if column == 2 %>
+<div class="project-item col-sm-6">
+<% else %>
+<div class="project-item col-sm-4">
+<% end %>
+	<div class="thumb">
+		<% #link_to "", project_path(I18n.locale, id: post.id), class: "item-link" %>
+		<%= link_to "", post, class: "item-link"  %>
+		<div class="mask fade">
+		</div>
+		<%= image_tag post.thumb.url + "?" + DateTime.now.strftime('%s'), class: 'img-responsive', alt: post.title %>
+	</div> <!-- /thumb -->
+	<h3 class="project-name"><%=post.title %></h3>		
+</div>

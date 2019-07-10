@@ -20,7 +20,7 @@ $(function(){
         mode: "fade",
         controls: false,
         pager: false,
-        auto: true,
+        auto: false,
         speed: 800,
         autoDelay: 4000
     });
@@ -78,14 +78,15 @@ $(window).on("load", function (e) {
         },600);
     }
 });
+
 $(window).scroll(function(event) {
 	var scrolltop = $(window).scrollTop();
 
-	if(scrolltop > $(window).height() - ($('#mainNav').outerHeight(true)/2)){
-		$("#header").addClass('black');
-	}else{
-		$("#header").removeClass('black');
-	}
+	if (scrolltop > 40) {
+        $(".navbar").addClass('head-unpinned');
+    }else{
+        $(".navbar").removeClass('head-unpinned');
+    }
 });
 
 function svgimg(){

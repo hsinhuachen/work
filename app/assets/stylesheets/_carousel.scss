@@ -1,5 +1,4 @@
 #full{
-    overflow: hidden;
 }
 
 .bx-wrapper{
@@ -9,16 +8,17 @@
 }
 
 .carousel-inner{
-    height: 100vh;
+  padding-top: 136px;
+  max-height: 90vh;
+  min-height: 90vh;
 }
 
 .pic{
 	background-repeat: no-repeat;
 	background-position: center center;
 	background-size: cover;
-    width: 100%;
-	height: 100vh;
-    animation: img-small 15s linear infinite;
+  max-height: 90vh;
+  min-height: 90vh;
 }
 
 @keyframes img-small {

@@ -1,18 +1,9 @@
 <%= render "shared/cycle" %>
-<div id="content" class="container">
-	<div class="homelist list">
-	<% @posts.each do |post| %>
-		<div class="project-item col-sm-6">
-			<% #link_to "", project_path(I18n.locale, id: post.id), class: "item-link" %>
-			<%= link_to "", post, class: "item-link"  %>
-			<div class="mask fade">
-				<h3 class="project-name"><%=post.title %></h3>
-			</div>
-			<%= image_tag post.thumb.url + "?" + DateTime.now.strftime('%s'), class: 'img-responsive', alt: post.title %>			
-		</div>
-	<% end %>
-		<hr class="clear" />
-	</div> <!-- /list -->
+<div class="homelist list">
+<% @posts.each do |post| %>
+	<%= render partial: "shared/item", locals: {post: post, column: 2} %>
+<% end %>
+	<hr class="clear" />
+</div> <!-- /list -->
 
-	<%= link_to content_tag(:span, 'View all works'), projects_path, class: 'more text-center' %>
-</div> <!-- /content -->
+<%= link_to content_tag(:span, 'View all works'), projects_path, class: 'more text-center' %>
