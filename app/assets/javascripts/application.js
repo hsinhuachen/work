@@ -20,7 +20,7 @@ $(function(){
         mode: "fade",
         controls: false,
         pager: false,
-        auto: false,
+        auto: true,
         speed: 800,
         autoDelay: 4000
     });
