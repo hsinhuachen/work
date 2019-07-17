@@ -1,9 +1,10 @@
 <%= render "shared/cycle" %>
 <div class="homelist list">
-<% @posts.each do |post| %>
-	<%= render partial: "shared/item", locals: {post: post, column: 2} %>
-<% end %>
-	<hr class="clear" />
+	<div class="row">
+		<% @posts.each do |post| %>
+			<%= render partial: "shared/item", locals: {post: post, column: 3} %>
+		<% end %>
+	</div>
 </div> <!-- /list -->
 
 <%= link_to content_tag(:span, 'View all works'), projects_path, class: 'more text-center' %>

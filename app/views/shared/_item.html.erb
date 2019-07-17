@@ -1,7 +1,9 @@
 <% if column == 2 %>
-<div class="project-item col-sm-6">
+<div class="project-item col-md-6">
+<% elsif column == 3 %>
+<div class="project-item col-md-4 col-sm-6">
 <% else %>
-<div class="project-item col-sm-4">
+<div class="project-item col-md-3 col-sm-6">
 <% end %>
 	<div class="thumb">
 		<% #link_to "", project_path(I18n.locale, id: post.id), class: "item-link" %>
