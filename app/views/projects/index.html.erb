@@ -1,22 +1,13 @@
 <div class="page">
-	<div class="category">
-		<%= if params["category"]
-				link_to content_tag(:span,'All'), projects_path, class: ''
-			else
-				link_to content_tag(:span,'All'), projects_path, class: 'active'
-			end
-		%>
-		<% @tags = showAllTag %>
-		<% @tags.each do |tag|  %>
-			<%=
-				if params["category"] && params["category"] == tag.name
-					link_to content_tag(:span,tag.name), projects_path(category: tag.name), class: 'active'
-				else
-					link_to content_tag(:span,tag.name), projects_path(category: tag.name)
-				end
-			%>
-		<% end %>
-	</div>
+	<%= render "shared/taglist" %>
+	<%=
+		# if params[:name]
+		# 	content_tag :h2, params[:name]
+		# else
+		# 	content_tag :h2, "All"
+		# end
+	%>
+
 	<div id="projects" class="list">
 		<div class="row">
 			<% @posts.each do |post| %>

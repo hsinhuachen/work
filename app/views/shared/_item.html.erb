@@ -12,5 +12,6 @@
 		</div>
 		<%= image_tag post.thumb.url + "?" + DateTime.now.strftime('%s'), class: 'img-responsive', alt: post.title %>
 	</div> <!-- /thumb -->
-	<h3 class="project-name"><%=post.title %></h3>		
+	<h3 class="project-name"><%=post.title %></h3>
+	<% #content_tag :p, post.tag_list %>
 </div>

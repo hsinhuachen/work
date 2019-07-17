@@ -10,6 +10,7 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+//= require turbolinks
 //= require bootstrap/carousel
 //= require jquery.waypoints.min
 
@@ -34,17 +35,22 @@ $(function(){
     })
 })
 
-function productShow(){
-    $(".img-item").each(function(index, el) {
-        $(".img-item:eq(" + index + ")").waypoint(function(direction) {
-            $(".img-item:eq(" + index + ")").addClass('in');
-        }, {
-            offset: '70%'
-        });
-    });
-}
+$(document).on('turbolinks:load', function(){
+  console.log('load');
+    pageload();
+});
 
-$(window).on("load", function (e) {
+$(document).on('turbolinks:visit', function(){
+  console.log('visit');
+});
+
+
+$(document).on('turbolinks:before-visit', function(){
+  console.log('before-visit');
+});
+
+
+function pageload() {
     var progress = 0;
     var imgCount = $('img').length;
     var baseCount = 0;
@@ -61,12 +67,8 @@ $(window).on("load", function (e) {
                     setTimeout(function(){
                         $("#loading").remove();
                     },600);
-                    
-                    setTimeout(function(){
-                        if($(".img-item").length > 0){
-                            productShow();
-                        }
-                    }, 600);
+
+                    productShow();
                 }
             });
         });
@@ -77,7 +79,17 @@ $(window).on("load", function (e) {
             $("#loading").remove();
         },600);
     }
-});
+};
+
+function productShow(){
+    $(".img-item").each(function(index, el) {
+        $(".img-item:eq(" + index + ")").waypoint(function(direction) {
+            $(".img-item:eq(" + index + ")").addClass('in');
+        }, {
+            offset: '70%'
+        });
+    });
+}
 
 $(window).scroll(function(event) {
 	var scrolltop = $(window).scrollTop();

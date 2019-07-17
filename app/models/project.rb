@@ -7,7 +7,6 @@ class Project < ApplicationRecord
 	validates :title, presence: true
 
 	default_scope -> { order('sorting DESC') }
-	# scope :category, -> { joins(:tags).where(:tags => { :id => 1}).where(published: true).order('sorting DESC') }
 	scope :category, ->(category) { joins(:tags).where(:tags => { "name" => category }).where(published: true).order('sorting DESC') }
 
 	def tag_list

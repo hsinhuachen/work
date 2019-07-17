@@ -7,6 +7,8 @@ class ProjectsController < ApplicationController
 			#@posts = Project.where(published: true)
 			@pagy, @posts = pagy(Project.where(published: true))
 		end
+
+		@tags = Tag.all()
 	end
 
 	# GET /projects/1

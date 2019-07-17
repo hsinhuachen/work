@@ -1,0 +1,10 @@
+<div class="page">
+	<%= render "shared/taglist" %>
+	<%=
+		if params[:id]
+			content_tag :h2, "aaa"
+		else
+			content_tag :h2, "All"
+		end
+	%>
+</div>

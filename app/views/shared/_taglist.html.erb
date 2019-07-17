@@ -1,0 +1,18 @@
+<div class="category">
+	<%= if params[:name]
+			link_to content_tag(:span,'All'), projects_path, class: ''
+		else
+			link_to content_tag(:span,'All'), projects_path, class: 'active'
+		end
+	%>
+	<% @tags.each do |tag|  %>
+		<%=
+			if params[:name] && params[:name] == tag.name
+				link_to content_tag(:span,tag.name), projects_path(category: tag.name), class: 'active'
+			else
+				#link_to content_tag(:span,tag.name), projects_path(category: tag.name)
+				link_to content_tag(:span,tag.name), category_path(tag.name)
+			end
+		%>
+	<% end %>
+</div>

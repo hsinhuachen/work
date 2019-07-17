@@ -1,10 +1,8 @@
 Rails.application.routes.draw do
   root 'welcome#index'
   resources :projects, only: [:index, :show]
+  get "/projects/category/:name", to: "projects#index", :as => :category
 
-  # resources :tags do
-  # 	resources :projects, only: [:index, :show]
-  # end
 
   # scope "/:locale" do
  	# root 'welcome#index'

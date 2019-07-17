@@ -19,6 +19,7 @@
 * rails generate model tag name:string
 * rails generate model tagging tag:belongs_to project:belongs_to
 * rails generate model gallery name:string sorting:integer project_id:integer
+* rails g controller Tags
 
 ## Run
 * bundle install

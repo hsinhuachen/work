@@ -8,6 +8,10 @@ module ProjectsHelper
 		Tag.all
 	end
 
+	def tag_title(id)
+		Tag.select("name").find(id)
+	end
+
 	def getGalleryImg(id)
 		img = Gallery.find(id)
 		content_tag :div,image_tag(img.name.url, class: "img-responsive", data: { "original": img.name.url}), class: "img-item fade"
