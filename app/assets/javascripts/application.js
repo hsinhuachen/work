@@ -26,6 +26,8 @@ $(function(){
         autoDelay: 4000
     });
 
+    productShow();
+
     $(".gotop").on('click', function(event) {
         $("body,html").animate({
           scrollTop: 0,
@@ -34,20 +36,6 @@ $(function(){
         event.preventDefault();
     })
 })
-
-$(document).on('turbolinks:load', function(){
-  console.log('load');
-    pageload();
-});
-
-$(document).on('turbolinks:visit', function(){
-  console.log('visit');
-});
-
-
-$(document).on('turbolinks:before-visit', function(){
-  console.log('before-visit');
-});
 
 
 function pageload() {
@@ -67,8 +55,6 @@ function pageload() {
                     setTimeout(function(){
                         $("#loading").remove();
                     },600);
-
-                    productShow();
                 }
             });
         });
