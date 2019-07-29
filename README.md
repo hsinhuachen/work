@@ -20,6 +20,8 @@
 * rails generate model tagging tag:belongs_to project:belongs_to
 * rails generate model gallery name:string sorting:integer project_id:integer
 * rails g controller Tags
+* rails generate model Cycle title:text image:string sorting:integer
+
 
 ## Run
 * bundle install
@@ -29,6 +31,9 @@
 * rails generate trestle:auth:install
 * rails g uploader Avatar
 * rails g uploader Gallery
+* rails g uploader Image
+
+* rails generate trestle:resource Cycle
 
 * Administrator.create(email: "*****@gmal.com", password: "*****", first_name: "oniondesign", last_name: "")
 

@@ -1,5 +1,5 @@
 <!-- <div id="loading" class="loadwrap"></div> -->
-<%= render "shared/cycle" %>
+<%= render partial: "shared/cycle", locals: {cycle: @cycle} %>
 <div class="homelist list">
 	<div class="row">
 		<% @posts.each do |post| %>

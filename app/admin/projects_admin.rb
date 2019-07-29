@@ -1,6 +1,8 @@
 Trestle.resource(:projects) do
   menu do
-    item :projects, icon: "fa fa-star", label: "作品"
+    group :project do
+      item :projects, icon: "fa fa-star", label: "作品"
+    end
   end
 
   scope :all, -> { Project.order("sorting desc") }, default: true

@@ -1,9 +1,11 @@
 <div id="full" class="carousel">
 	<div class="carousel-inner slider">
+	<% @cycle.each do |img| %>
 	  <div class="carousel-item">
-	  	<div class="pic" style="background-image: url('<%= asset_path("chenli.jpg") %>'); "></div>
+	  	<% cycleImg = img.image.url if img.image? %>
+	  	<div class="pic" style="background-image: url('<%= cycleImg %>'); "></div>
 	  </div>
-	  <div class="carousel-item">
+	  <!-- <div class="carousel-item">
 	  	<div class="pic" style="background-image: url('<%= asset_path("gutenberg.jpg") %>'); "></div>
 	  </div>
 	  <div class="carousel-item">
@@ -11,6 +13,7 @@
 	  </div>
 	  <div class="carousel-item">
 	  	<div class="pic" style="background-image: url('<%= asset_path("tolaku.jpg") %>'); "></div>
-	  </div>
+	  </div> -->
+	<% end %>
 	</div> <!-- /carousel-inner -->
 </div>
