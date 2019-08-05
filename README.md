@@ -28,6 +28,7 @@
 * rake db:migrate
 * rails generate trestle:install
 * rails generate trestle:resource Project
+* rails generate trestle:resource Gallery
 * rails generate trestle:auth:install
 * rails g uploader Avatar
 * rails g uploader Gallery

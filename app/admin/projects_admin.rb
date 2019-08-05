@@ -83,20 +83,9 @@ Trestle.resource(:projects) do
           end.join.html_safe
         }
 
-        hidden_field :delImg, name: "delImgStr"
-        galleryIds = project.gallery_ids
-        galleryIds.map do |id|
-          img = project.img_name(id)
-          row do
-            col(md: 6) { 
-              concat content_tag(:div, nil ,:class =>"imgPanel") {
-                image_tag(img.name.url)+
-                link_to(content_tag(:i, 'Delete image', class: "fa fa-trash"), "#", class: "delImg btn btn-danger has-icon", data: { id: id , toggle: "confirm-delete", placement: "bottom" })
-                # link_to(content_tag(:i, 'Delete image', class: "fa fa-trash"), "#", class: "delImg btn btn-danger has-icon", data: { id: id , confirm: "Are you sure you want to delete this image?" })
-              }
-            }
-          end #end row
-        end
+
+        table GalleriesAdmin.table, collection: project.gallerys
+        
       end
 
       concat(content_tag(:div, content_tag(:img),class: "upload-preview"))
@@ -107,7 +96,7 @@ Trestle.resource(:projects) do
         concat content_tag(:div, nil, class: "previewimg", id: "thumbpreview"){ 
           concat image_tag(project.thumb.url, class: "thumbimg") if project.thumb.url
         }
-        raw_file_field :thumb
+        raw_file_field :thumb, class: "thumbimg"
       end
 
       # tag_select :tag_items
@@ -197,14 +186,6 @@ Trestle.resource(:projects) do
         params[:gallerys]['name'].each do |img|
           @picture = instance.gallerys.create("name" => img)
         end
-      end
-
-      # 刪除gallery
-      delImgStr = params["delImgStr"]
-      delArray = delImgStr.split(',')
-
-      delArray.map do |delId|
-        Gallery.destroy(delId)     
       end
 
       if admin.save_instance(instance, params)  
