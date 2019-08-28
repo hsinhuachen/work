@@ -67,6 +67,10 @@ function pageload() {
     }
 };
 
+$(document).on('turbolinks:load', function() {
+    console.log('load');
+})
+
 function productShow(){
     $(".img-item").each(function(index, el) {
         $(".img-item:eq(" + index + ")").waypoint(function(direction) {

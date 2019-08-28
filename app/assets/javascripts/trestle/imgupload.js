@@ -1,5 +1,4 @@
 $(document).on('turbolinks:load', function() {
- 	console.log('aaa');
 	$("#project_thumb").change(function(event) {
 		var input = $(event.currentTarget);
 		var file = input[0].files[0];
