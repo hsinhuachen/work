@@ -67,9 +67,25 @@ function pageload() {
     }
 };
 
-$(document).on('turbolinks:load', function() {
-    console.log('load');
-})
+$(document).on('turbolinks:click',function() {
+  //console.log('click');
+  $("#home, #projects").addClass('animated-out fadeOut');
+});
+
+$(document).on('turbolinks:load', function(){
+    //console.log('show');
+    setTimeout(function(){
+        $("#home, #projects").addClass('animated fadeIn');
+    },600)
+})   
+
+$(document).on('turbolinks:visit', function(){
+    //console.log('visit');
+});   
+
+$(document).on('turbolinks:before-visit', function(){
+    //console.log('before-visit');
+});
 
 function productShow(){
     $(".img-item").each(function(index, el) {

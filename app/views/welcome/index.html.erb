@@ -1,11 +1,13 @@
 <!-- <div id="loading" class="loadwrap"></div> -->
-<%= render partial: "shared/cycle", locals: {cycle: @cycle} %>
-<div class="homelist list">
-	<div class="row">
-		<% @posts.each do |post| %>
-			<%= render partial: "shared/item", locals: {post: post, column: 3} %>
-		<% end %>
-	</div>
-</div> <!-- /list -->
+<div id="home">
+	<%= render partial: "shared/cycle", locals: {cycle: @cycle} %>
+	<div class="homelist list">
+		<div class="row">
+			<% @posts.each do |post| %>
+				<%= render partial: "shared/item", locals: {post: post, column: 3} %>
+			<% end %>
+		</div>
+	</div> <!-- /list -->
 
-<%= link_to content_tag(:span, 'View all works'), projects_path, class: 'more text-center' %>
+	<%= link_to content_tag(:span, 'View all works'), projects_path, class: 'more text-center' %>
+</div> <!-- /main -->

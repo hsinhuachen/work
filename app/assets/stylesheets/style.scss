@@ -38,6 +38,16 @@ a:focus{
 	}
 }
 
+@media screen and (max-width: 767px){
+	.navbar-nav {
+		text-align: center;
+		margin: 0;
+		li{
+			display: inline-block;
+		}
+	}
+}
+
 .img-responsive{
 	max-width: 1600px;
 	width: 100%;
@@ -47,11 +57,14 @@ a:focus{
 	@include animated(fill,0.6s);
 }
 
+
 #header{
-	position: fixed;
-	left: 0;
-	right: 0;
-	z-index: 2;
+	@media (min-width: 768px) {
+		position: fixed;
+		left: 0;
+		right: 0;
+		z-index: 2;
+	}
 	&.black .logopath{
 		fill: #000000;
 	}
@@ -113,6 +126,24 @@ a:focus{
 	}
 }
 
+@media screen and (max-width: 767px){
+	.navbar {
+		width: 100%;
+		height: auto;
+		text-align: center;
+		.navbar-brand{
+			float: none;
+			margin-left: auto;
+			margin-right: auto;
+			display: inline-block;
+		}
+	}
+
+	.navbar .nav{
+		padding-top: 20px;
+	}
+}
+
 .head-unpinned {
     -webkit-transform: translateY(-50px);
     -moz-transform: translateY(-50px);
@@ -151,6 +182,7 @@ a:focus{
 
 .list{
 	font-size: 0;
+	min-height: 600px;
 }
 
 .project-item {
@@ -341,6 +373,23 @@ a:focus{
 		float: none;
 		margin-left: -15px;
 	}
+}
+
+@media screen and (max-width: 767px) {
+	.carousel-inner, .page{
+		padding-top: 40px;
+	}
+}
+
+#home, #projects{
+	opacity: 0;
+}
+
+.animated-out {
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
 }
 
 .clear {
