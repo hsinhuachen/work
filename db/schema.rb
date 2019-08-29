@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_29_072102) do
+ActiveRecord::Schema.define(version: 2019_08_29_071657) do
 
   create_table "administrators", force: :cascade do |t|
     t.string "email"
@@ -23,8 +23,24 @@ ActiveRecord::Schema.define(version: 2019_07_29_072102) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "cds", force: :cascade do |t|
+    t.integer "cd_id"
+    t.text "company"
+    t.text "info"
+    t.string "user"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "folder_id"
+  end
+
 # Could not dump table "cycles" because of following StandardError
 #   Unknown type 'boolite' for column 'publish'
+
+  create_table "folders", force: :cascade do |t|
+    t.string "foldername"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "galleries", force: :cascade do |t|
     t.string "name"

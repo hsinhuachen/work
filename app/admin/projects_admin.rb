@@ -1,6 +1,6 @@
 Trestle.resource(:projects) do
   menu do
-    group :project do
+    group :project, priority: 1 do
       item :projects, icon: "fa fa-star", label: "作品"
     end
   end

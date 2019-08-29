@@ -1,6 +1,6 @@
 Trestle.resource(:cycles) do
   menu do
-    group :home do
+    group :home, priority: :first do
       item :cycles, icon: "fa fa-star", label: "圖片輪播"
     end
   end
