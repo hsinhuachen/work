@@ -21,6 +21,14 @@ Trestle.resource(:galleries) do
     text_field :sorting, label: "排序"
   end
 
+  controller do 
+    def destroy
+      self.instance.destroy
+      flash[:message] = flash_message("destroy.success", title: "圖片已刪除", message: "The %{lowercase_model_name} was successfully created.")   
+      redirect_to edit_projects_admin_path(self.instance.project_id, anchor: '!tab-Gallery')
+    end
+  end
+
   # By default, all parameters passed to the update and create actions will be
   # permitted. If you do not have full trust in your users, you should explicitly
   # define the list of permitted parameters.

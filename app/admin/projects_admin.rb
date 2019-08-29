@@ -70,7 +70,7 @@ Trestle.resource(:projects) do
       form_group :gallerys, label: false do
 
         concat content_tag(:div, nil, :class => "custom-file"){
-          raw_file_field :name, :multiple => true, name: "gallerys[name][]", class: "custom-file-input", id: "customFile"
+          raw_file_field :name, :multiple => true, name: "gallerys[name][]", class: "custom-file-input", id: "mutiupload"
           concat content_tag(:label, "Choose file", class: "custom-file-label", for: "customFile")
         }
 
@@ -83,9 +83,9 @@ Trestle.resource(:projects) do
           end.join.html_safe
         }
 
+        concat content_tag(:div, "",:id => "galleryList", :class => "galleryList")
 
         table GalleriesAdmin.table, collection: project.gallerys
-        
       end
 
       concat(content_tag(:div, content_tag(:img),class: "upload-preview"))
