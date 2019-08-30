@@ -9,6 +9,14 @@ class ProjectsController < ApplicationController
 		end
 
 		@tags = Tag.all()
+
+		# ----------------------------
+		@projects = Project.all
+
+		respond_to do |format|
+			format.html
+			format.csv { send_data @projects.to_csv, filename: "project-#{Date.today}.csv" }
+		end
 	end
 
 	# GET /projects/1

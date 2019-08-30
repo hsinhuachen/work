@@ -45,7 +45,7 @@ gem "rails-i18n"
 gem 'bootstrap-sass', '~> 3.4.1'
 gem 'sassc-rails', '>= 2.1.0'
 
-gem 'trestle'
+gem 'trestle', "~> 0.8.12"
 gem 'trestle-auth'
 gem 'trestle-tinymce'
 # gem 'trestle-active_storage'

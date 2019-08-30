@@ -18,6 +18,11 @@ Trestle.resource(:projects) do
     end
   end
 
+  # toolbar do
+  #    default_buttons
+  #    link_to "Custom Action", admin.path(:project, model, :custom_action), className: 'fa fa-custom'
+  # end
+
   # Customize the table columns shown on the index view.
   #
   table do
@@ -237,6 +242,15 @@ Trestle.resource(:projects) do
       flash[:error] = flash_message("published.cancel", title: "#{missile.title} 已取消發佈", message: "The %{lowercase_model_name} was successfully updated.")  
       redirect_to admin.path(:index, id: missile)
     end
+
+    def export
+      @projects = Project.all
+
+      respond_to do |format|
+        format.html
+        format.csv { send_data @projects.to_csv, filename: "project-#{Date.today}.csv" }
+      end
+    end
   end
 
   routes do
@@ -244,6 +258,7 @@ Trestle.resource(:projects) do
     post :cancel_feature, on: :member
     post :pub_status, on: :member
     post :cancel_status, on: :member
+    post :export, on: :collection
   end
 
   # By default, all parameters passed to the update and create actions will be

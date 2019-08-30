@@ -1,4 +1,6 @@
 class Project < ApplicationRecord
+	require 'csv'
+
 	has_many :taggings, dependent: :destroy
 	has_many :tags, through: :taggings
 	has_many :gallerys, -> {  order('name asc') }, dependent: :destroy
@@ -67,5 +69,22 @@ class Project < ApplicationRecord
 
 	def next
 	  Project.where(["sorting > ?", sorting]).where(published: true).first
+	end
+
+	# export to csv
+	def self.to_csv
+	    attributes = %w{id title}
+
+	    CSV.generate(headers: true) do |csv|
+	      csv << attributes
+
+	      all.each do |user|
+	        csv << attributes.map{ |attr| user.send(attr) }
+	      end
+	    end
+	 end
+
+	def name
+		"#{title}"
 	end
 end
