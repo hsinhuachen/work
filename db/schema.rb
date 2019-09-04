@@ -33,9 +33,6 @@ ActiveRecord::Schema.define(version: 2019_08_29_071657) do
     t.integer "folder_id"
   end
 
-# Could not dump table "cycles" because of following StandardError
-#   Unknown type 'boolite' for column 'publish'
-
   create_table "folders", force: :cascade do |t|
     t.string "foldername"
     t.datetime "created_at", null: false
