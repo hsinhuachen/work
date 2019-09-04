@@ -113,9 +113,11 @@ a:focus{
 		padding-right: 0;
 	}
 	.navbar-brand{
-		height: auto;
+		color: #000;
+		font-family: 'Staatliches', cursive;
+		font-size: 46px;
 		padding: 0;
-		margin: 40px 0 0 0px;
+		margin: 60px 0 0 0px;
 	}
 	.nav-link{
 		color: #000;
@@ -177,6 +179,35 @@ a:focus{
 		&:hover span, &.active span{
 			border-bottom: 2px solid #000;
 		}
+	}
+}
+
+#article{
+	@media (max-width: 767px) {
+		padding-top: 20px;
+	}
+	@media (min-width: 768px) {
+		padding-top: 136px;
+	}
+	min-height: 600px;
+	p{
+		font-size: 19px;
+	}
+}
+
+
+.section{
+	padding-top: 20px;
+	h3{
+		font-size: 27px;
+		padding-bottom: 10px;
+		border-bottom: 1px solid #CCC;
+	}
+	ul{
+		margin-left: -15px;
+	}
+	li{
+		font-size: 17px;
 	}
 }
 
