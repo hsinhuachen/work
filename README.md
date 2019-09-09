@@ -39,7 +39,7 @@
 
 * rails generate trestle:resource Cycle
 
-* Administrator.create(email: "*****@gmal.com", password: "*****", first_name: "oniondesign", last_name: "")
+* Administrator.create(email: "****@gmal.com", password: "****", first_name: "hsinhua", last_name: "chen")
 
 * rails g controller Projects
 
