@@ -26,6 +26,7 @@
 	<div class="info tw">
 	<h1><%=@post.title %></h1>
 	<%= @post.desc.html_safe %>
+	<%= link_to "Link", @post.url, class: "btn-link", target: "_blank" %>
 	</div>
 
 	<% end %>
