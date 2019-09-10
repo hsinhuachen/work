@@ -157,6 +157,8 @@ a:focus{
 }
 
 .page{
+	position: relative;
+	z-index: 5;
 	padding-top: 136px;
 }
 
