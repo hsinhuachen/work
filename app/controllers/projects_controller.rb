@@ -22,5 +22,8 @@ class ProjectsController < ApplicationController
 	# GET /projects/1
 	def show
 		@post = Project.find(params[:id])
+		if @post.published == false
+			redirect_to projects_path, notice: '作品未發佈'
+		end
 	end
 end

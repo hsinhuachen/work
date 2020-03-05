@@ -48,10 +48,6 @@ a:focus{
 	}
 }
 
-.img-responsive{
-	max-width: 1600px;
-	width: 100%;
-}
 
 .logopath{
 	@include animated(fill,0.6s);
@@ -275,6 +271,9 @@ a:focus{
 
 .img-item{
 	margin-bottom: 30px;
+	img{
+		margin: 0 auto;
+	}
 }
 
 .control{

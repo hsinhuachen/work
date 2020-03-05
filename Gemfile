@@ -51,6 +51,7 @@ gem 'trestle-auth'
 gem 'trestle-tinymce'
 # gem 'trestle-active_storage'
 gem 'trestle-search'
+gem 'trestle-sidekiq'
 
 gem 'carrierwave', '~> 1.0'
 # gem 'rmagick', '~> 2.16'
